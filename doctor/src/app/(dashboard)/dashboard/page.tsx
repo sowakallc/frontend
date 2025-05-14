@@ -134,7 +134,7 @@ export default function DoctorDashboardPage() {
         </div>
         <div className="mt-4 md:mt-0">
           <Button className="bg-teal-600 hover:bg-teal-700" asChild>
-            <Link href="/dashboard/seminars">
+            <Link href="seminars">
               <Plus className="mr-2 h-4 w-4" /> Create Seminar
             </Link>
           </Button>
@@ -235,7 +235,7 @@ export default function DoctorDashboardPage() {
               </CardContent>
               <CardFooter className="pt-0">
                 <Button className="w-full bg-teal-600 hover:bg-teal-700" asChild>
-                  <Link href="/dashboard/seminars">
+                  <Link href="seminars">
                     <Plus className="mr-2 h-4 w-4" /> Create New Seminar
                   </Link>
                 </Button>

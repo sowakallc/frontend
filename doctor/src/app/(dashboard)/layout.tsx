@@ -13,7 +13,7 @@ import {
   Menu,
   MessageSquare,
   Search,
-  Settings,
+  // Settings,
   User,
   Users,
   Video,
@@ -50,13 +50,13 @@ export default function DoctorDashboardLayout({ children }: { children: React.Re
 
   const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: Home },
-    { name: "My Seminars", href: "/dashboard/seminars", icon: Video },
-    { name: "Calendar", href: "/dashboard/calendar", icon: Calendar },
-    { name: "Directory", href: "/dashboard/directory", icon: Users },
-    { name: "Contacts", href: "/dashboard/contacts", icon: Contact },
-    { name: "Chat", href: "/dashboard/chat", icon: MessageSquare },
-    { name: "Profile", href: "/dashboard/profile", icon: User },
-    { name: "Settings", href: "/dashboard/settings", icon: Settings },
+    { name: "My Seminars", href: "/seminars", icon: Video },
+    { name: "Calendar", href: "/calendar", icon: Calendar },
+    { name: "Directory", href: "/directory", icon: Users },
+    { name: "Contacts", href: "/contacts", icon: Contact },
+    { name: "Chat", href: "/chat", icon: MessageSquare },
+    { name: "Profile", href: "/profile", icon: User },
+    
   ]
 
   return (
@@ -66,7 +66,7 @@ export default function DoctorDashboardLayout({ children }: { children: React.Re
         <SheetContent side="left" className="p-0 w-64">
           <div className="flex h-16 items-center justify-between px-4 border-b">
             <Link href="/dashboard" className="text-teal-600 font-bold text-xl">
-              WellnessConnect
+              SOWAKA
             </Link>
             <Button variant="ghost" size="icon">
               <X className="h-5 w-5" />
@@ -109,7 +109,7 @@ export default function DoctorDashboardLayout({ children }: { children: React.Re
         <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
           <div className="flex flex-shrink-0 items-center h-16 px-4 border-b">
             <Link href="/dashboard" className="text-teal-600 font-bold text-xl">
-              WellnessConnect
+              SOWAKA
             </Link>
           </div>
           <div className="flex flex-shrink-0 items-center p-4 border-b">
@@ -189,12 +189,14 @@ export default function DoctorDashboardLayout({ children }: { children: React.Re
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <User className="mr-2 h-4 w-4" />
-                    <span>Profile</span>
+                   <Link href='profile'>
+                   <span>Profile</span>
+                   </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  {/* <DropdownMenuItem>
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
-                  </DropdownMenuItem>
+                  </DropdownMenuItem> */}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <LogOut className="mr-2 h-4 w-4" />

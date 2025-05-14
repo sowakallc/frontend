@@ -6,32 +6,30 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Eye, EyeOff, Lock, Mail, Stethoscope } from "lucide-react"
+import { Eye, EyeOff, Lock, Mail, Stethoscope, User } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast, Toaster } from "sonner"
 
-export default function DoctorLoginPage() {
+export default function DoctorRegisterPage() {
   const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault()
 
-    // In a real app, this would authenticate the user
+    // In a real app, this would register the user
     // For demo purposes, we'll just show a notification and redirect
-    toast.success("Login successful", {
-      description: "Welcome back! You are now logged in as a doctor.",
+    toast.success("Registration submitted", {
+      description: "Your doctor registration has been submitted for approval. We'll notify you once it's approved.",
     })
 
-    // Store the user role in localStorage
-    localStorage.setItem("userRole", "doctor")
-
-    // Redirect to the doctor dashboard
-    router.push("/dashboard")
+    // Redirect to the doctor login page
+    router.push("/")
   }
 
   return (
@@ -50,11 +48,18 @@ export default function DoctorLoginPage() {
                 <Stethoscope className="h-8 w-8 text-teal-600" />
               </div>
             </div>
-            <CardTitle className="text-2xl font-bold">Doctor Login</CardTitle>
-            <CardDescription>Enter your credentials to access your healthcare provider account</CardDescription>
+            <CardTitle className="text-2xl font-bold">Healthcare Provider Registration</CardTitle>
+            <CardDescription>Create your doctor account to provide wellness services</CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
+            <form onSubmit={handleRegister} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Full Name</Label>
+                <div className="relative">
+                  <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                  <Input id="name" placeholder="Dr. Jane Smith" className="pl-10" required />
+                </div>
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <div className="relative">
@@ -63,12 +68,29 @@ export default function DoctorLoginPage() {
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Password</Label>
-                  <Link href="/forgot-password" className="text-xs text-teal-600 hover:underline">
-                    Forgot password?
-                  </Link>
-                </div>
+                <Label htmlFor="specialty">Specialty</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select your specialty" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="cardiology">Cardiology</SelectItem>
+                    <SelectItem value="dermatology">Dermatology</SelectItem>
+                    <SelectItem value="endocrinology">Endocrinology</SelectItem>
+                    <SelectItem value="family-medicine">Family Medicine</SelectItem>
+                    <SelectItem value="neurology">Neurology</SelectItem>
+                    <SelectItem value="pediatrics">Pediatrics</SelectItem>
+                    <SelectItem value="psychiatry">Psychiatry</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="license">License Number</Label>
+                <Input id="license" placeholder="License number" required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="password">Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input id="password" type={showPassword ? "text" : "password"} className="pl-10 pr-10" required />
@@ -87,16 +109,23 @@ export default function DoctorLoginPage() {
                   </Button>
                 </div>
               </div>
+              <div className="space-y-2">
+                <Label htmlFor="confirm-password">Confirm Password</Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                  <Input id="confirm-password" type="password" className="pl-10" required />
+                </div>
+              </div>
               <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white">
-                Login
+                Submit Application
               </Button>
             </form>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <div className="text-sm text-center text-gray-500">
-              Don't have an account?{" "}
-              <Link href="/register" className="text-teal-600 font-medium hover:underline">
-                Register
+              Already have an account?{" "}
+              <Link href="/" className="text-teal-600 font-medium hover:underline">
+                Login
               </Link>
             </div>
             <div className="text-sm text-center">
@@ -104,7 +133,12 @@ export default function DoctorLoginPage() {
                 Back to Home
               </Link>
             </div>
-            
+            <div className="text-sm text-center text-gray-500">
+              Are you a patient?{" "}
+              <Link href="/register/patient" className="text-teal-600 hover:underline">
+                Register as Patient
+              </Link>
+            </div>
             <div className="text-xs text-center text-gray-400">
               By continuing, you agree to our{" "}
               <Link href="/terms" className="text-teal-600 hover:underline">

@@ -22,7 +22,7 @@ export default function PatientLoginPage() {
     localStorage.setItem("userRole", "patient")
 
     // Redirect to the patient dashboard
-    router.push("/patient")
+    router.push("/dashboard")
   }
 
   return (
