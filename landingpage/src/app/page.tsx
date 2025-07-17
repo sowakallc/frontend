@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Link, Image,motion,Button} from '../components/index'
+import { Link, Image, motion, Button } from "../components/index"
 import Footer from "../components/landingpage/Footer"
 import CTASection from "../components/landingpage/CTASection"
 import FAQSection from "../components/landingpage/FAQSection"
@@ -17,11 +17,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
+      setIsScrolled(window.scrollY > 50)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -36,69 +32,73 @@ export default function LandingPage() {
           isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
         }`}
       >
-        <div className="container mx-auto flex items-center justify-between px-4">
-          <Link href="/" className="flex items-center gap-2">
-            <motion.div initial={{ rotate: -10 }} animate={{ rotate: 0 }} transition={{ duration: 0.5 }}>
+        <div className="container mx-auto flex items-center justify-between px-4 md:px-6">
+          {/* Logo and Brand */}
+          <Link href="/" className="flex items-center gap-3">
+            <motion.div
+              initial={{ rotate: -10 }}
+              animate={{ rotate: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex-shrink-0"
+            >
               <Image
-                src="images/placeholder.svg?height=40&width=40"
+                src="images/placeholder.svg?height=60&width=60"
                 alt="Sowaka Logo"
-                width={40}
-                height={40}
+                width={60}
+                height={60}
                 className="rounded-lg"
               />
             </motion.div>
-            <span className="font-bold text-xl text-teal-700">SOWAKA</span>
+
+            <div className="flex flex-col leading-tight">
+              <span className="font-semibold text-lg sm:text-xl text-teal-700">
+                SOWAKA HEALTH
+              </span>
+              <span className="text-sm text-gray-500 max-w-xs">
+                {/* Recognizes the importance of human interaction and touch for better health! */}
+                State of well-being, Health & Happiness
+              </span>
+            </div>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="#features" className="text-gray-600 hover:text-teal-600 transition-colors">
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <Link href="#features" className="text-gray-700 hover:text-teal-600 transition-colors">
               Features
             </Link>
-            <Link href="#how-it-works" className="text-gray-600 hover:text-teal-600 transition-colors">
+            <Link href="#how-it-works" className="text-gray-700 hover:text-teal-600 transition-colors">
               How It Works
             </Link>
-            <Link href="#pricing" className="text-gray-600 hover:text-teal-600 transition-colors">
-              Pricing
-            </Link>
-            <Link href="#testimonials" className="text-gray-600 hover:text-teal-600 transition-colors">
+            <Link href="#testimonials" className="text-gray-700 hover:text-teal-600 transition-colors">
               Testimonials
             </Link>
           </nav>
 
-          <div className="flex items-center gap-4">
-            <Link href='/login'>
-            <Button variant="outline" className="hidden sm:flex">
-              Log in
-            </Button>
+          {/* Actions */}
+          <div className="flex items-center gap-3">
+            <Link href="/login">
+              <Button variant="outline" className="hidden sm:inline-flex">
+                Log in
+              </Button>
             </Link>
-            <Button className="bg-teal-600 hover:bg-teal-700">Sign up free</Button>
+            <Button className="bg-teal-600 hover:bg-teal-700 transition-colors">
+              Sign up free
+            </Button>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <HeroSection />
-
-      {/* Trusted By Section */}
-      <TrustedBySection />
-
-      {/* Features Section */}
-      <FeatureSection />
-
-      {/* How It Works Section */}
-      <HowItWorksSection />
-
-      {/* Testimonials Section */}
-      <TestimonialSection />
-
-      {/* Pricing Section */}
-      <PricingSection />
-
-      {/* FAQ Section */}
-     <FAQSection />
-
-      {/* CTA Section */}
-      <CTASection />
+      {/* Page Sections */}
+      <main className="pt-28 sm:pt-32">
+        <HeroSection />
+        <TrustedBySection />
+        <FeatureSection />
+        <HowItWorksSection />
+        <TestimonialSection />
+        <PricingSection />
+        {/* <FAQSection /> */}
+        <CTASection />
+      </main>
 
       {/* Footer */}
       <Footer />

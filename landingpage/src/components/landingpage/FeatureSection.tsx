@@ -12,11 +12,11 @@ const FeatureSection = () => {
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-          Features designed for healthcare coordination
+          Website features are designed to empower your health journey, leading to a healthier and happier you !
         </h2>
         <p className="text-xl text-gray-600">
-          Our platform bridges the gap between healthcare providers and patients with powerful tools for wellness
-          management.
+          Provide cost-effective care to all, by encouraging self-education and facilitating effective communication, the platform
+has the potential to significantly decrease unnecessary healthcare usage, including additional trips to the clinic
         </p>
       </motion.div>
 

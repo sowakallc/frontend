@@ -1,3 +1,4 @@
+import { CookieConsent } from '../cookie-consent'
 import { Link, Image} from '../index'
 
 const Footer = () => {
@@ -116,11 +117,12 @@ const Footer = () => {
                 height={40}
                 className="rounded-lg"
               />
-              <span className="font-bold text-xl text-white">SOWAKA</span>
+              <span className="font-bold text-xl text-white">SOWAKA HEALTH</span>
             </div>
-            <p className="text-sm">© {new Date().getFullYear()} SOWAKA. All rights reserved.</p>
+            <p className="text-sm">© {new Date().getFullYear()} SOWAKAHEALTH. All rights reserved.</p>
           </div>
         </div>
+        <CookieConsent />
       </footer>
   )
 }
